@@ -3,6 +3,33 @@
   padding-left: 15%;
   padding-top: 1%;
   padding-right: 50%;
-  border: 1px solid red;
+  border: 1px solid black;
+  border-width: 5px;
 }
 
+button.deleteTodo{
+  margin-left: 10px;
+}
+
+.todoForm label{
+  padding-right: 10px;
+}
+.todoForm button{
+  margin-left: 10px;
+}
+
+.todoItem {
+  font-size: xx-large;
+}
+
+.todoCheckbox {
+  margin-right: 10px;
+}
+.finishedTodo{
+  color: crimson;
+  text-decoration: line-through red
+}
+
+.nobullets {
+  list-style-type: none;
+ }

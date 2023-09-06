@@ -1,5 +1,11 @@
 import { useState } from "react"
 
+/**
+ * The foum adds a new todo into our array of all todos
+ * 
+ * fun bit: The add todo item is disabled if the field is blank or 
+ *          only contains whitespace.
+ */
 export default function TodoForm ({setAllTodos}) {
     const [todoName, setTodoName] = useState("")
 
@@ -12,6 +18,7 @@ export default function TodoForm ({setAllTodos}) {
     
     const handleFormSubmit = (event) => {
         event.preventDefault()
+        
         setAllTodos( (curentTodos) => {
             return [ ...curentTodos,
                      generateNewTodoItem()]
@@ -23,16 +30,16 @@ export default function TodoForm ({setAllTodos}) {
 
     return(
         <>
-        <form onSubmit={handleFormSubmit}
+        <form onSubmit={handleFormSubmit} className="todoForm"
                   autoComplete="off">
-                <label htmlFor="todoItem">Enter New ToDo:</label>
+                <label htmlFor="todoItem">Enter New Todo:</label>
                 <input type="text"
                     id="todoItem"
                     placeholder="new todo item..."
                     onChange={ (e) => setTodoName(e.target.value) }
                     value={todoName}/>
                 <button className="btnTodo"
-                        disabled={todoName===""} >Add</button>
+                        disabled={todoName.trim()===""} >Add</button>
             </form>
         </>
     )
