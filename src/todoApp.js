@@ -17,6 +17,12 @@ export default function TodoApp () {
         })
     }
 
+    const deleteTodoItem = (idToDelete) => {
+        setAllTodos( currentTodos => {
+            return currentTodos.filter( todo => todo.id !== idToDelete)
+        })
+    }
+
     /**
      * A todo list item is a component with:
      *      A Checkbox (keyed on their id)
@@ -33,7 +39,8 @@ export default function TodoApp () {
                             onChange={(e)=>toggleTodoCheckbox( todoItem.id, e.target.checked)}/>
                     {todoItem.isDone? <s>{todoItem.name}</s>:todoItem.name}
                 </label>
-                <button className="deleteTodo">Delete</button>
+                <button className="deleteTodo"
+                        onClick={() => deleteTodoItem(todoItem.id)}>Delete</button>
               </li>  
             )
         })
