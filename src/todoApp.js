@@ -1,7 +1,8 @@
 import { useState } from "react"
+import TodoForm from "./TodoForm"
 
 export default function TodoApp () {
-    const [todoName, setTodoName] = useState("")
+    
     const [allTodos, setAllTodos] = useState([])
 
     const toggleTodoCheckbox = (id, currentCheckState) =>{
@@ -46,37 +47,12 @@ export default function TodoApp () {
         })
     }
 
-    const generateNewTodoItem = ()=> {
-        return {id: crypto.randomUUID(),
-                name: todoName,
-                isDone: false}
-    }
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault()
-        setAllTodos( (curentTodos) => {
-            return [ ...curentTodos,
-                     generateNewTodoItem()]
-        })//end set all todos
-
-        setTodoName("")
-    }
 
    
     return (
         <>
         <div className="todoApp">
-            <form onSubmit={handleFormSubmit}
-                  autoComplete="off">
-                <label htmlFor="todoItem">Enter New ToDo:</label>
-                <input type="text"
-                    id="todoItem"
-                    placeholder="new todo item..."
-                    onChange={ (e) => setTodoName(e.target.value) }
-                    value={todoName}/>
-                <button className="btnTodo"
-                        disabled={todoName===""} >Add</button>
-            </form>
+            <TodoForm setAllTodos={setAllTodos}/>
             <ul>
                 {generateTodoListItems()}
             </ul>
