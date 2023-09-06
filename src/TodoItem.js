@@ -9,7 +9,7 @@ export default function TodoItem ({setAllTodos, id, name, isDone }){
             //return a new collection of the current todo list (where the one with the id is modified)
             return currentTodos.map( (todo) => {
                 if (todo.id === id) {
-                    const newTodo = {id: todo.id, name: todo.name, isDone: currentCheckState}
+                    const newTodo = {...todo, isDone: currentCheckState}
                     return newTodo
                 }
                 return todo
